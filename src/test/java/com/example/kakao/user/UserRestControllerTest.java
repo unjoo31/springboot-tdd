@@ -72,7 +72,7 @@ public class UserRestControllerTest {
         System.out.println("테스트 : "+requestBody);
 
         // stub(가정)
-        when(userService.login(any())).thenReturn("abcd"); // userService.login(any())를 실행하면 토큰을 리턴한다
+        when(userService.login(any())).thenReturn("abcd"); // userService.login(any())를 실행하면 .thenReturn("abcd")을 리턴한다
 
         // when (실행)
         ResultActions actions = mvc.perform(post("/login").content(requestBody).contentType(MediaType.APPLICATION_JSON));

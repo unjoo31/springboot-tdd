@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.Answers.values;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -88,7 +89,7 @@ public class ProductRestControllerTest extends MockData{
 
         // then (상태 검증)
         actions.andExpect(jsonPath("$.success").value(true));
-        actions.andExpect(jsonPath("$.response").value(values()));
+        actions.andExpect(jsonPath("$.response").value(notNullValue(ProductResponse.FindByIdDTO.class)));
         actions.andExpect(jsonPath("$.error").value(nullValue()));
     }
 
@@ -115,7 +116,7 @@ public class ProductRestControllerTest extends MockData{
 
         // then
         actions.andExpect(jsonPath("$.success").value(true));
-        // actions.andExpect(jsonPath("$.response").value(notNull()));
+        actions.andExpect(jsonPath("$.response").value(notNullValue(ProductResponse.FindByIdDTO.class)));
         actions.andExpect(jsonPath("$.error").value(nullValue()));
     }
 }
